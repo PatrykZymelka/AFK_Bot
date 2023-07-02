@@ -1,6 +1,9 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 public class GUI extends JFrame {
     public JPanel MainPanel;
@@ -78,32 +81,61 @@ public class GUI extends JFrame {
             seconds_string = String.format("%02d", seconds);
             minutes_string = String.format("%02d", minutes);
             timeLabel.setText(minutes_string+":"+seconds_string);
-            AFK(elapsedTime);
+            try {
+                AFK(elapsedTime);
+            } catch (AWTException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     });
-    void AFK (int ElapsedTime){
+    void AFK (int ElapsedTime) throws AWTException {
         GUIActionPerformer GAP = new GUIActionPerformer();
+
         int T = GAP.TimeConversion((String) TimeMode.getSelectedItem());
+        Robot r = new Robot();
         if(ElapsedTime%T == 0){
             switch((String) AFKMode.getSelectedItem()){
                 case "Jump":
-                    System.out.println("JUMP");
+                    r.keyPress(KeyEvent.VK_SPACE);
+                    r.keyRelease(KeyEvent.VK_SPACE);
                     break;
 
                 case "Left Click":
-                    System.out.println("Left Click");
+                    r.mousePress(InputEvent.BUTTON1_MASK);
+                    r.mouseRelease(InputEvent.BUTTON1_MASK);
                     break;
 
                 case "WASD":
-                    System.out.println("WASD");
+                    r.keyPress(KeyEvent.VK_W);
+                    r.keyRelease(KeyEvent.VK_W);
+
+                    r.keyPress(KeyEvent.VK_A);
+                    r.keyRelease(KeyEvent.VK_A);
+
+                    r.keyPress(KeyEvent.VK_S);
+                    r.keyRelease(KeyEvent.VK_S);
+
+                    r.keyPress(KeyEvent.VK_D);
+                    r.keyRelease(KeyEvent.VK_D);
                     break;
 
                 case "Random":
-                    System.out.println("Random");
+                    r.keyPress(KeyEvent.VK_W);
+                    r.keyRelease(KeyEvent.VK_W);
+
+                    r.keyPress(KeyEvent.VK_A);
+                    r.keyRelease(KeyEvent.VK_A);
+
+                    r.keyPress(KeyEvent.VK_S);
+                    r.keyRelease(KeyEvent.VK_S);
+
+                    r.keyPress(KeyEvent.VK_D);
+                    r.keyRelease(KeyEvent.VK_D);
                     break;
 
                 default:
-                    System.out.println("Random");
+                    r.keyPress(KeyEvent.VK_SPACE);
+                    r.keyRelease(KeyEvent.VK_SPACE);
                     break;
 
             }
