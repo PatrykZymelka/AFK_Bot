@@ -15,7 +15,7 @@ public class GUI extends JFrame {
     private JLabel timeLabel;
     private JButton button1;
     boolean started = false;
-    int elapsedTime = 3580000;
+    int elapsedTime = 0;
     int minutes = 0;
     int seconds = 0;
     String seconds_string = String.format("%02d", seconds);
@@ -83,12 +83,12 @@ public class GUI extends JFrame {
             timeLabel.setText(minutes_string+":"+seconds_string);
             try {
                 AFK(elapsedTime);
-            } catch (AWTException ex) {
+            } catch (AWTException | InterruptedException ex) {
                 throw new RuntimeException(ex);
             }
         }
     });
-    void AFK (int ElapsedTime) throws AWTException {
+    void AFK (int ElapsedTime) throws AWTException, InterruptedException {
         GUIActionPerformer GAP = new GUIActionPerformer();
 
         int T = GAP.TimeConversion((String) TimeMode.getSelectedItem());
@@ -97,6 +97,7 @@ public class GUI extends JFrame {
             switch((String) AFKMode.getSelectedItem()){
                 case "Jump":
                     r.keyPress(KeyEvent.VK_SPACE);
+                    Thread.sleep(500);
                     r.keyRelease(KeyEvent.VK_SPACE);
                     break;
 
@@ -107,15 +108,19 @@ public class GUI extends JFrame {
 
                 case "WASD":
                     r.keyPress(KeyEvent.VK_W);
+                    Thread.sleep(500);
                     r.keyRelease(KeyEvent.VK_W);
 
                     r.keyPress(KeyEvent.VK_A);
+                    Thread.sleep(500);
                     r.keyRelease(KeyEvent.VK_A);
 
                     r.keyPress(KeyEvent.VK_S);
+                    Thread.sleep(500);
                     r.keyRelease(KeyEvent.VK_S);
 
                     r.keyPress(KeyEvent.VK_D);
+                    Thread.sleep(500);
                     r.keyRelease(KeyEvent.VK_D);
                     break;
 
