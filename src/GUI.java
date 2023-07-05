@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.util.Random;
 
 public class GUI extends JFrame {
     public JPanel MainPanel;
@@ -20,6 +21,7 @@ public class GUI extends JFrame {
     int seconds = 0;
     String seconds_string = String.format("%02d", seconds);
     String minutes_string = String.format("%02d", minutes);
+    Random rand = new Random();
 
     public GUI() {
         StartButton.addActionListener(new ActionListener() {
@@ -125,17 +127,35 @@ public class GUI extends JFrame {
                     break;
 
                 case "Random":
-                    r.keyPress(KeyEvent.VK_W);
-                    r.keyRelease(KeyEvent.VK_W);
+                    int n = rand.nextInt(2);
+                    switch(n){
+                        case 0:
+                            r.keyPress(KeyEvent.VK_SPACE);
+                            Thread.sleep(500);
+                            r.keyRelease(KeyEvent.VK_SPACE);
+                            break;
+                        case 1:
+                            r.mousePress(InputEvent.BUTTON1_MASK);
+                            r.mouseRelease(InputEvent.BUTTON1_MASK);
+                            break;
+                        case 2:
+                            r.keyPress(KeyEvent.VK_W);
+                            Thread.sleep(500);
+                            r.keyRelease(KeyEvent.VK_W);
 
-                    r.keyPress(KeyEvent.VK_A);
-                    r.keyRelease(KeyEvent.VK_A);
+                            r.keyPress(KeyEvent.VK_A);
+                            Thread.sleep(500);
+                            r.keyRelease(KeyEvent.VK_A);
 
-                    r.keyPress(KeyEvent.VK_S);
-                    r.keyRelease(KeyEvent.VK_S);
+                            r.keyPress(KeyEvent.VK_S);
+                            Thread.sleep(500);
+                            r.keyRelease(KeyEvent.VK_S);
 
-                    r.keyPress(KeyEvent.VK_D);
-                    r.keyRelease(KeyEvent.VK_D);
+                            r.keyPress(KeyEvent.VK_D);
+                            Thread.sleep(500);
+                            r.keyRelease(KeyEvent.VK_D);
+                            break;
+                    }
                     break;
 
                 default:
