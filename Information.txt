@@ -1,0 +1,9 @@
+This program was made to perform tasks in desired time periods, in order to not be kicked from an online server, or to spend your free time in the best way possible.
+
+You operate this program by firstly choosing the operation that the bot will perform. You can choose from the list of possible options.
+After that you will need to choose the period in which the action will be performed.
+
+After choosing both of these elements you can press the Start program button in the left bottom corner. The clock on the bottom will indicate how many second passed between the processes.
+If you want to reset the clock and stop the process, you will need to press the reset button, situated in the right bottom corner. 
+If you want to stop the process without reseting the clock you will need to click the Stop Process button, which replaced the Start process button in the bottom left corer.
+You can freely change the AFK method and the period during the ticking of the clock, however it is advised to firstly at least stop the process.
