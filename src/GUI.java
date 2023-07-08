@@ -21,7 +21,7 @@ public class GUI extends JFrame {
     int seconds = 0;
     String seconds_string = String.format("%02d", seconds);
     String minutes_string = String.format("%02d", minutes);
-    Random rand = new Random();
+
 
     public GUI() {
         StartButton.addActionListener(new ActionListener() {
@@ -94,73 +94,22 @@ public class GUI extends JFrame {
         GUIActionPerformer GAP = new GUIActionPerformer();
 
         int T = GAP.TimeConversion((String) TimeMode.getSelectedItem());
-        Robot r = new Robot();
         if(ElapsedTime%T == 0){
             switch((String) AFKMode.getSelectedItem()){
                 case "Jump":
-                    r.keyPress(KeyEvent.VK_SPACE);
-                    Thread.sleep(500);
-                    r.keyRelease(KeyEvent.VK_SPACE);
+                    GAP.jump();
                     break;
 
                 case "Left Click":
-                    r.mousePress(InputEvent.BUTTON1_MASK);
-                    r.mouseRelease(InputEvent.BUTTON1_MASK);
+                    GAP.left();
                     break;
 
                 case "WASD":
-                    r.keyPress(KeyEvent.VK_W);
-                    Thread.sleep(500);
-                    r.keyRelease(KeyEvent.VK_W);
-
-                    r.keyPress(KeyEvent.VK_A);
-                    Thread.sleep(500);
-                    r.keyRelease(KeyEvent.VK_A);
-
-                    r.keyPress(KeyEvent.VK_S);
-                    Thread.sleep(500);
-                    r.keyRelease(KeyEvent.VK_S);
-
-                    r.keyPress(KeyEvent.VK_D);
-                    Thread.sleep(500);
-                    r.keyRelease(KeyEvent.VK_D);
+                    GAP.wsad();
                     break;
 
                 case "Random":
-                    int n = rand.nextInt(2);
-                    switch(n){
-                        case 0:
-                            r.keyPress(KeyEvent.VK_SPACE);
-                            Thread.sleep(500);
-                            r.keyRelease(KeyEvent.VK_SPACE);
-                            break;
-                        case 1:
-                            r.mousePress(InputEvent.BUTTON1_MASK);
-                            r.mouseRelease(InputEvent.BUTTON1_MASK);
-                            break;
-                        case 2:
-                            r.keyPress(KeyEvent.VK_W);
-                            Thread.sleep(500);
-                            r.keyRelease(KeyEvent.VK_W);
-
-                            r.keyPress(KeyEvent.VK_A);
-                            Thread.sleep(500);
-                            r.keyRelease(KeyEvent.VK_A);
-
-                            r.keyPress(KeyEvent.VK_S);
-                            Thread.sleep(500);
-                            r.keyRelease(KeyEvent.VK_S);
-
-                            r.keyPress(KeyEvent.VK_D);
-                            Thread.sleep(500);
-                            r.keyRelease(KeyEvent.VK_D);
-                            break;
-                    }
-                    break;
-
-                default:
-                    r.keyPress(KeyEvent.VK_SPACE);
-                    r.keyRelease(KeyEvent.VK_SPACE);
+                    GAP.rand();
                     break;
 
             }
