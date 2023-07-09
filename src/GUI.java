@@ -2,15 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.util.Random;
+
 
 public class GUI extends JFrame {
     public JPanel MainPanel;
     private JButton StartButton;
     private JProgressBar Progress;
-    private JButton StopButton;
     private JComboBox TimeMode ;
     private JComboBox AFKMode;
     private JLabel timeLabel;
@@ -21,6 +18,7 @@ public class GUI extends JFrame {
     int seconds = 0;
     String seconds_string = String.format("%02d", seconds);
     String minutes_string = String.format("%02d", minutes);
+    GUIActionPerformer GAP = new GUIActionPerformer();
 
 
     public GUI() {
@@ -91,8 +89,6 @@ public class GUI extends JFrame {
         }
     });
     void AFK (int ElapsedTime) throws AWTException, InterruptedException {
-        GUIActionPerformer GAP = new GUIActionPerformer();
-
         int T = GAP.TimeConversion((String) TimeMode.getSelectedItem());
         if(ElapsedTime%T == 0){
             switch((String) AFKMode.getSelectedItem()){

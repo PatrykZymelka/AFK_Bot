@@ -9,7 +9,7 @@ public class GUIActionPerformer {
     public void jump() throws AWTException, InterruptedException {
         Robot r = new Robot();
         r.keyPress(KeyEvent.VK_SPACE);
-        Thread.sleep(500);
+        Thread.sleep(50);
         r.keyRelease(KeyEvent.VK_SPACE);
     }
     public void left() throws AWTException, InterruptedException {
@@ -20,19 +20,19 @@ public class GUIActionPerformer {
     public void wsad() throws AWTException, InterruptedException {
         Robot r = new Robot();
         r.keyPress(KeyEvent.VK_W);
-        Thread.sleep(500);
+        Thread.sleep(50);
         r.keyRelease(KeyEvent.VK_W);
 
         r.keyPress(KeyEvent.VK_A);
-        Thread.sleep(500);
+        Thread.sleep(50);
         r.keyRelease(KeyEvent.VK_A);
 
         r.keyPress(KeyEvent.VK_S);
-        Thread.sleep(500);
+        Thread.sleep(50);
         r.keyRelease(KeyEvent.VK_S);
 
         r.keyPress(KeyEvent.VK_D);
-        Thread.sleep(500);
+        Thread.sleep(50);
         r.keyRelease(KeyEvent.VK_D);
     }
     public void rand() throws AWTException, InterruptedException {
