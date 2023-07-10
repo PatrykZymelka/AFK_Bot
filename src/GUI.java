@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 public class GUI extends JFrame {
     public JPanel MainPanel;
     private JButton StartButton;
-    private JProgressBar Progress;
     private JComboBox TimeMode ;
     private JComboBox AFKMode;
     private JLabel timeLabel;
@@ -57,9 +56,10 @@ public class GUI extends JFrame {
     public void Initialize() {
         setContentPane(MainPanel);
         setTitle("AFK bot");
-        setSize(350, 200);
+        setSize(350, 150);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
 
         String[] TimeModes = {"2 minutes", "1 minute","15 seconds","1 second"};
         for(int i = 0; i <TimeModes.length; i++) {
